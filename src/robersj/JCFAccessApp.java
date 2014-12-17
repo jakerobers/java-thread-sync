@@ -1,6 +1,7 @@
 package robersj;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class JCFAccessApp {
@@ -22,6 +23,18 @@ public class JCFAccessApp {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("####################");
+		System.out.println("##### Size: "+ alist.size() +" #####");
+		System.out.println("####################");
+		System.out.println();
+		System.out.println();
+		System.out.println("####################");
+		System.out.println("###### Order  ######");
+		System.out.println("####################");
+		for (int i = 0; i < alist.size(); i++) {
+			System.out.println(alist.get(i));
+		}
 	}
 	
 	private void pause(long t) {
@@ -35,7 +48,6 @@ public class JCFAccessApp {
 	private void addElements(int count) {
 		for ( int i = 0; i < count; i++ ) {
 			JCFAccessApp.alist.add(i);
-			System.out.println(i);
 		}
 	}
 	
