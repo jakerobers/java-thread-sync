@@ -45,9 +45,11 @@ public class JCFAccessApp {
 		}
 	}
 	
-	private synchronized void addElements(int count) {
-		for ( int i = 0; i < count; i++ ) {
-			JCFAccessApp.alist.add(i);
+	private void addElements(int count) {
+		synchronized (alist) {
+			for ( int i = 0; i < count; i++ ) {
+				JCFAccessApp.alist.add(i);
+			}
 		}
 	}
 	
