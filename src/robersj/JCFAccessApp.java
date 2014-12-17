@@ -9,7 +9,7 @@ public class JCFAccessApp {
 	private static List<Integer> alist;
 	
 	public static void main(String args[]) {
-		alist = new ArrayList<Integer>();
+		alist = new LinkedList<Integer>();
 		
 		new JCFAccessApp();
 	}
