@@ -15,7 +15,7 @@ public class JCFAccessApp {
 	}
 	
 	public JCFAccessApp() {
-		Thread second_thread = new SecondThread(this);
+		Thread second_thread = new SecondThread();
 		second_thread.start();
 		this.addElements(100);
 		try {
@@ -45,19 +45,13 @@ public class JCFAccessApp {
 		}
 	}
 	
-	private void addElements(int count) {
+	private synchronized void addElements(int count) {
 		for ( int i = 0; i < count; i++ ) {
 			JCFAccessApp.alist.add(i);
 		}
 	}
 	
 	private class SecondThread extends Thread {
-
-		JCFAccessApp app;
-		
-		public SecondThread(JCFAccessApp app) {
-			this.app = app;
-		}
 		
 		public void run() {
 			addElements(100);
