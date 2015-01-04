@@ -15,9 +15,9 @@ public class JCFAccessApp {
 	}
 	
 	public JCFAccessApp() {
-		Thread second_thread = new SecondThread(this);
+		Thread second_thread = new SecondThread();
 		second_thread.start();
-		this.addElements(100);
+		this.addElements(1000);
 		try {
 			second_thread.join();
 		} catch (InterruptedException e) {
@@ -52,15 +52,9 @@ public class JCFAccessApp {
 	}
 	
 	private class SecondThread extends Thread {
-
-		JCFAccessApp app;
-		
-		public SecondThread(JCFAccessApp app) {
-			this.app = app;
-		}
 		
 		public void run() {
-			addElements(100);
+			addElements(1000);
 		}
 	}
 }
