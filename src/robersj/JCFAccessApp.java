@@ -17,7 +17,7 @@ public class JCFAccessApp {
 	public JCFAccessApp() {
 		Thread second_thread = new SecondThread();
 		second_thread.start();
-		this.addElements(100);
+		this.addElements(1000);
 		try {
 			second_thread.join();
 		} catch (InterruptedException e) {
@@ -46,9 +46,18 @@ public class JCFAccessApp {
 	}
 	
 	private void addElements(int count) {
-		synchronized (alist) {
-			for ( int i = 0; i < count; i++ ) {
+		for ( int i = 0; i < count; i++ ) {
+			synchronized (alist) {
 				JCFAccessApp.alist.add(i);
+				alist.notifyAll();
+				
+				try {
+					if (i > count -1) {
+						this.wait();
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -56,7 +65,7 @@ public class JCFAccessApp {
 	private class SecondThread extends Thread {
 		
 		public void run() {
-			addElements(100);
+			addElements(1000);
 		}
 	}
 }
